@@ -132,5 +132,6 @@ module Zendesk
     include Zendesk::Entry
     include Zendesk::Search
     include Zendesk::Comment
+    include Zendesk::Export
   end
 end
