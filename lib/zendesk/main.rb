@@ -99,7 +99,11 @@ module Zendesk
         @headers_raw = curl.header_str
         parse_headers
         # parse the data coming back
-        @data = Crack::XML.parse(@body || "") if @format == "xml"
+        if @format == "xml"
+          @data = Crack::XML.parse(@body || "")
+        elsif @format == "json"
+          @data = Crack::JSON.parse(@body || "")
+        end
       end
 
       def parse_headers
